@@ -1,3 +1,4 @@
+// ignore_for_file: unused_field
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,9 @@ class _RegisterState extends State<Register> {
   final _phone = TextEditingController();
   final _email = TextEditingController();
   final _password = TextEditingController();
+
+  String? _nameError;
+  String? _businessNameError;
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +105,7 @@ class _RegisterState extends State<Register> {
                             horizontal: 10,
                             vertical: 20,
                           ),
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.number,
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: CupertinoColors.systemGrey,
@@ -119,7 +123,7 @@ class _RegisterState extends State<Register> {
                             horizontal: 10,
                             vertical: 20,
                           ),
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: CupertinoColors.systemGrey,
@@ -131,13 +135,14 @@ class _RegisterState extends State<Register> {
                         CupertinoTextField(
                           controller: _password,
                           placeholder: 'Password',
+                          obscureText: true,
                           placeholderStyle: const TextStyle(
                               color: CupertinoColors.systemGrey),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 10,
                             vertical: 20,
                           ),
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.visiblePassword,
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: CupertinoColors.systemGrey,
@@ -150,14 +155,18 @@ class _RegisterState extends State<Register> {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           color: const Color.fromARGB(255, 112, 78, 234),
                           child: const SizedBox(
-                            width: 350,
+                            width: 370,
                             child: Text(
                               'Sign Up',
                               style: TextStyle(fontWeight: FontWeight.w600),
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            print(
+                              "$_name.text, $_businessName.text, $_phone.text, $_email.text, $_password.text",
+                            );
+                          },
                         ),
                         const SizedBox(height: 40),
                         Row(
@@ -190,4 +199,6 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
+
+  // Funcs
 }
